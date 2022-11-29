@@ -6,7 +6,7 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-def auth(scopes):
+def get_creds(scopes):
     creds = None
 
     # The file token.json stores the user's access and refresh tokens, and is
