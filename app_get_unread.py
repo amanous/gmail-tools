@@ -6,13 +6,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 
-def get_unread(creds):
+def get_unread(service):
     try:
         ids = set()
         threads = set()
         pageToken = None
         while True:
-            service = build('gmail', 'v1', credentials=creds)
             msg_getter = service.users().messages()
             getter = msg_getter.list(userId='me',
                                      labelIds=['INBOX', 'UNREAD'],
@@ -57,4 +56,5 @@ if __name__ == '__main__':
     scopes = ['https://www.googleapis.com/auth/gmail.readonly']
     from auth_cloud import auth
     creds = auth(scopes)
-    get_unread(creds)
+    service = build('gmail', 'v1', credentials=creds)
+    get_unread(service)
