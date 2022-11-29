@@ -2,7 +2,6 @@
 
 import sys
 
-from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 
@@ -54,7 +53,8 @@ def get_unread(service):
 
 if __name__ == '__main__':
     scopes = ['https://www.googleapis.com/auth/gmail.readonly']
-    from auth_cloud import auth
-    creds = auth(scopes)
+    from auth_cloud import get_creds
+    creds = get_creds(scopes)
+    from googleapiclient.discovery import build
     service = build('gmail', 'v1', credentials=creds)
     get_unread(service)
