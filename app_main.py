@@ -20,7 +20,9 @@ if __name__ == '__main__':
     from auth_cloud import get_creds
     service_kwargs = {}
     from app_get_unread import get_unread
+    from app_get_filters import get_filters
     commands = {
         'unread': get_unread,
+        'filters': get_filters,
     }
     main(get_creds, service_kwargs, commands)
